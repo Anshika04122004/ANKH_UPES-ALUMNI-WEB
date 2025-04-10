@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatroom</title>
+  <link rel="stylesheet" href="chatroom.css">
+</head>
+<body>
+  <div id="chatContainer">
+    <header>
+      <h2>Welcome to the Chatroom, <span id="usernameDisplay"></span>!</h2>
+      <button onclick="logout()" class="logout-button">Logout</button>
+    </header>
+    <div id="chatBox"></div>
+    <div class="input-container">
+      <input type="text" id="messageInput" placeholder="Type your message..." />
+      <button onclick="sendMessage()" class="send-button">Send</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <script>
+    // Connect to the server
+    const socket = io("http://localhost:7000");
+
+    // Retrieve username from localStorage
+    const username = localStorage.getItem("username");
+
+    if (!username) {
+      // Redirect to login if no username is found
+      window.location.href = "PAGE2.html";
+    } else {
+      document.getElementById("usernameDisplay").textContent = username;
+
+      // Notify the server that a user has joined
+      socket.emit("userConnected", username);
+    }
+
+    // Listen for incoming chat messages
+    socket.on("chatMessage", (data) => {
+      displayMessage(data.username, data.message);
+    });
+
+    // Function to send a message
+    function sendMessage() {
+      const message = document.getElementById("messageInput").value.trim();
+      if (message) {
+        // Emit the message to the server
+        socket.emit("chatMessage", { username, message });
+
+        // Display the sent message
+        displayMessage(username, message, true);
+
+        // Clear the input field
+        document.getElementById("messageInput").value = "";
+      }
+    }
+
+    // Function to display a message in the chat box
+    function displayMessage(username, message, isSelf = false) {
+      const chatBox = document.getElementById("chatBox");
+      const newMessage = document.createElement("div");
+
+      newMessage.className = isSelf ? "message self" : "message";
+      newMessage.innerHTML = `<strong>${username}:</strong> ${message}`;
+      chatBox.appendChild(newMessage);
+
+      // Scroll to the latest message
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem("username");
+      window.location.href = "PAGE2.html";
+    }
+  </script>
+</body>
+</html>

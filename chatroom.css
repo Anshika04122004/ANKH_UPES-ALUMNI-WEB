@@ -1,0 +1,111 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Chat Container */
+  #chatContainer {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header Styles */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  h2 {
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Logout Button */
+  .logout-button {
+    padding: 8px 12px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff1a1a;
+  }
+  
+  /* Chat Box Styles */
+  #chatBox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 300px;
+    overflow-y: auto;
+    margin: 10px 0;
+    background-color: #fafafa;
+    border-radius: 4px;
+  }
+  
+  /* Message Styles */
+  .message {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+  }
+  
+  .message.self {
+    background-color: #cce5ff; /* Light blue for self messages */
+    text-align: right; /* Align self messages to the right */
+  }
+  
+  /* Input Container Styles */
+  .input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Message Input Styles */
+  #messageInput {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  #messageInput:focus {
+    border-color: #66afe9; /* Change border color on focus */
+  }
+  
+  /* Send Button Styles */
+  .send-button {
+    padding: 10px 15px;
+    background-color: #5cb85c; /* Bootstrap success color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .send-button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 500px) {
+    #chatContainer {
+      width: 95%; /* Full width on small screens */
+    }
+  }

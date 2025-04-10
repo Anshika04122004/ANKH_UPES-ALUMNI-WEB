@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANKH</title>
+  <link rel="stylesheet" href="exmp2.css"> </head>
+<body>
+  <video autoplay muted loop id="myVideo">
+    <source src="HTML/IMG/istockphoto-1937150599-640_adpp_is.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <script>
+    var video = document.getElementById("myVideo");
+    var btn = document.getElementById("myBtn");
+    
+    function myFunction() {
+      if (video.paused) {
+        video.play();
+        btn.innerHTML = "Pause";
+      } else {
+        video.pause();
+        btn.innerHTML = "Play";
+      }
+    }
+    </script>
+  <div class="container">
+    <img src="https://i.im.ge/2024/10/10/kj7xwf.LOGO.png" alt="ANKH Logo" width="150px" height="auto" style="display: block; margin: 0 auto;"> 
+
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      <input type="checkbox" id="rememberMe" name="rememberMe">
+      <label for="rememberMe">Remember Me</label>
+      <input type="Submit" value="LOGIN">
+      <input type="Submit" value="SIGN IN">
+    </form>
+    <p id="errorMessage" style="color: red; text-align: center; display: none;"></p>
+  </div>
+</body>
+</html>
